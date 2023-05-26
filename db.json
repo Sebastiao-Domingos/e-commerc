@@ -1,0 +1,469 @@
+{
+  "users": [
+    {
+      "name": "sebastiao",
+      "email": "domingossebastiao380@gmail.com",
+      "tel": "923121212",
+      "morada": "Rangel",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 1
+    },
+    {
+      "name": "Domingos",
+      "email": "sebastiao380@gmail.com",
+      "tel": "923121212",
+      "morada": "Sao Paulo",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 2
+    },
+    {
+      "name": "Afonso",
+      "email": "sebastiao380@gmail.com",
+      "tel": "923121212",
+      "morada": "Golf 2",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 3
+    },
+    {
+      "name": "Joao",
+      "email": "domingos@gmail.com",
+      "tel": "920123345",
+      "morada": "São Paulo",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 4
+    },
+    {
+      "name": "Joao",
+      "email": "domingos@gmail.com",
+      "tel": "920123345",
+      "morada": "São Paulo",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 5
+    },
+    {
+      "name": "Joao",
+      "email": "domingos@gmail.com",
+      "tel": "920123345",
+      "morada": "São Paulo",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 6
+    },
+    {
+      "name": "Domingos",
+      "email": "domingossebastiao380@gma",
+      "tel": "13344",
+      "morada": "23rfdfg",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 7
+    },
+    {
+      "name": "Solange",
+      "email": "solange@gmail.com",
+      "tel": "920123345",
+      "morada": "Golf 2",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 8
+    },
+    {
+      "name": "Gomes",
+      "email": "gomes@gmail.com",
+      "tel": "920123345",
+      "morada": "Cacuaco",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 9
+    },
+    {
+      "name": "Eduardo",
+      "email": "eduardo@gmail.com",
+      "tel": "934121212",
+      "morada": "Viana",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 10
+    },
+    {
+      "name": "cesar antonio",
+      "email": "cesar@gmail.com",
+      "tel": "926614139",
+      "morada": "Rangel",
+      "pass": "123456",
+      "chat": [],
+      "compras": [],
+      "id": 11
+    },
+    {
+      "name": "Domilson",
+      "email": "domilson@gmail.com",
+      "tel": "920123345",
+      "morada": "Rocha",
+      "pass": "123",
+      "chat": [],
+      "compras": [],
+      "id": 12
+    }
+  ],
+  "products": {
+    "fertilizantes": [
+      {
+        "name": "Felogo",
+        "price": "3.000",
+        "id": "F001",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/fertilizantes/product (4).jfif"
+      },
+      {
+        "name": "Aprimorante",
+        "price": "7.000",
+        "id": "F002",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/fertilizantes/product (3).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "F003",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 6,
+        "photo": "/src/images/produtos/fertilizantes/product (2).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "F004",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/fertilizantes/product (1).jfif"
+      },
+      {
+        "name": "Fertilizador",
+        "price": "8.000",
+        "id": "F005",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 2,
+        "photo": "/src/images/produtos/fertilizantes/product (5).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "F006",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/fertilizantes/product (6).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "F007",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/fertilizantes/product (7).jfif"
+      },
+      {
+        "name": "Felogo",
+        "price": "3.000",
+        "id": "F008",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 7,
+        "photo": "/src/images/produtos/fertilizantes/product (8).jfif"
+      },
+      {
+        "name": "Aprimorante",
+        "price": "7.000",
+        "id": "F009",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/fertilizantes/product (9).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "F010",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/fertilizantes/product (10).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "F011",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/fertilizantes/product (11).jfif"
+      },
+      {
+        "name": "Fertilizador",
+        "price": "8.000",
+        "id": "F012",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/fertilizantes/product (12).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "F013",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/fertilizantes/product (13).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "F014",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/fertilizantes/product (14).jfif"
+      }
+    ],
+    "adubos": [
+      {
+        "name": "Felogo",
+        "price": "3.000",
+        "id": "A001",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/adubos/adubos (4).jfif"
+      },
+      {
+        "name": "Depatora",
+        "price": "7.000",
+        "id": "A002",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/adubos/adubos (3).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "A003",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 6,
+        "photo": "/src/images/produtos/adubos/adubos (2).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "A004",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/adubos/adubos (1).jfif"
+      },
+      {
+        "name": "Adubador",
+        "price": "8.000",
+        "id": "A005",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 2,
+        "photo": "/src/images/produtos/adubos/adubos (5).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "A006",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/adubos/adubos (6).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "A007",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/adubos/adubos (7).jfif"
+      },
+      {
+        "name": "Felogo",
+        "price": "3.000",
+        "id": "A008",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 7,
+        "photo": "/src/images/produtos/adubos/adubos (8).jfif"
+      },
+      {
+        "name": "Aprimorante",
+        "price": "7.000",
+        "id": "A009",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/adubos/adubos (9).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "A010",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/adubos/adubos (10).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "A011",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/adubos/adubos (11).jfif"
+      },
+      {
+        "name": "Adubadora",
+        "price": "8.000",
+        "id": "A012",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/adubos/adubos (12).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "A013",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/adubos/adubos (13).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "A014",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/adubos/adubos (14).jfif"
+      }
+    ],
+    "sementes":[
+      {
+        "name": "Semente pa tomate",
+        "price": "3.000",
+        "id": "S001",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/sementes/semente (4).jfif"
+      },
+      {
+        "name": "Aprimorante",
+        "price": "7.000",
+        "id": "S002",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/sementes/semente (3).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "S003",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 6,
+        "photo": "/src/images/produtos/sementes/semente (2).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "S004",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/sementes/semente (1).jfif"
+      },
+      {
+        "name": "Fertilizador",
+        "price": "8.000",
+        "id": "S005",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 2,
+        "photo": "/src/images/produtos/sementes/semente (5).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "S006",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/sementes/semente (6).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "S007",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/sementes/semente (7).jfif"
+      },
+      {
+        "name": "Felogo",
+        "price": "3.000",
+        "id": "S008",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 7,
+        "photo": "/src/images/produtos/sementes/semente (8).jfif"
+      },
+      {
+        "name": "Aprimorante",
+        "price": "7.000",
+        "id": "S009",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/sementes/semente (9).jfif"
+      },
+      {
+        "name": "Despatador",
+        "price": "8.000",
+        "id": "S010",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/sementes/semente (10).jfif"
+      },
+      {
+        "name": "Footerador",
+        "price": "4.000",
+        "id": "S011",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 1,
+        "photo": "/src/images/produtos/sementes/semente (11).jfif"
+      },
+      {
+        "name": "Fertilizador",
+        "price": "8.000",
+        "id": "S012",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 3,
+        "photo": "/src/images/produtos/sementes/semente (12).jfif"
+      },
+      {
+        "name": "Fermador",
+        "price": "6.000",
+        "id": "S013",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 5,
+        "photo": "/src/images/produtos/sementes/semente (13).jfif"
+      },
+      {
+        "name": "Adofermaria",
+        "price": "2.000",
+        "id": "S014",
+        "info": "Este e o melhor produto de todos os tempos.",
+        "stars": 4,
+        "photo": "/src/images/produtos/sementes/semente (14).jfif"
+      }
+    ],
+    "maquinas": []
+  }
+}

@@ -1,0 +1,11 @@
+import {Confirm } from './confirm/Confirm.jsx'
+import SignUP from './signUp/SignUP.jsx'
+import SignInModal from './signIn/SignInModal.jsx'
+import { MotherModal} from './MotherModal.jsx'
+import {Alert } from './modalAlert/Alert.jsx'
+import {Base} from './baseSign/Base.jsx'
+import { Loading } from './loading/Loading.jsx'
+import {Content } from './contentModa/Content.jsx'
+import {Allowed } from './allowed/Allowed.jsx'
+import {Warn } from './warn/Warn.jsx'
+export { Allowed ,Warn,Confirm , SignUP , SignInModal , MotherModal, Alert,Base,Loading,Content  }
