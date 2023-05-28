@@ -8,6 +8,8 @@ import {Warn } from '../../../components/modals/export.js'
 import { Item } from './item/Item'
 
 export const Pagamento = () => {
+    document.title  = "Modo de pagamento";
+
     const { colors , } = useContext(ColorContext);
     const { productsBought , setProductsBought} = useContext(BoughtContext);
     const navigator = useNavigate();

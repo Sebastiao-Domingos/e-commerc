@@ -9,6 +9,7 @@ import {Header } from '../buyNow/header/Header'
 import {Warn } from '../../../components/modals/export.js'
 
 export const Endereco = () => {
+    document.title = "Endereço atual"
 
     const { colors , } = useContext(ColorContext);
     const { user , } = useContext(UserContext);

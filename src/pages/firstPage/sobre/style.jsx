@@ -36,6 +36,8 @@ export const Div = styled.div`
                 padding:5px;
                 border-radius:2px;
                 transition:all .5s ;
+                z-index:1000;
+                background:rgba(88, 81, 81, 0.6);
 
                 >svg{
                     font-size:2.5rem;
@@ -52,12 +54,14 @@ export const Div = styled.div`
 
                 &:hover{
                     background:${ props => props.colors.black};
+                    border:1px solid ${ props => props.colors.green1};
                     >svg{
                         color:${ props => props.colors.green1};
                     }
                 }
             }
             .contentSlider{
+                position:relative;
                 .contentWrapper{
                     overflow:hidden;
                     .wrapper{
@@ -66,6 +70,48 @@ export const Div = styled.div`
                         width:475%;
                         padding-right:5rem;
                     }
+                }
+
+                .views{
+                    width:110px;
+                    display:flex;
+                    justify-content:space-between;
+                    height:15px;
+                    position:absolute;
+                    transform:translateX(-50%);
+                    bottom:10px;
+                    left:50%;
+                    z-index:1000;
+
+                    >div{
+                        width:15px;
+                        height:15px;
+                        background:${props => props.colors.blue};
+                    }
+                    .active{
+                        transform:rotate(45deg);
+                    }
+                }
+            }
+        }
+
+        .body{
+            min-height:30rem;
+            padding:4rem;
+
+            .question{
+                display:flex;
+                align-items:center;
+                border-bottom:1px dotted ${ props => props.colors.green1 };
+
+                >img{
+                    width:100px;
+                }
+
+                >h3{
+                    margin-left:2rem;
+                    font-size:2rem;
+                    color:${props => props.colors.blue};
                 }
             }
         }

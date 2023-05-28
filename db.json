@@ -1,6 +1,13 @@
 {
   "users": [
     {
+      "name" : "administrador",
+      "email": "administrador12345678900987654321@gmail",
+      "pass" : "1234567890@0987654321",
+      "conversetions":[ { "id" : 1 , "chat" : [] }],
+      "id":0
+    },
+    {
       "name": "sebastiao",
       "email": "domingossebastiao380@gmail.com",
       "tel": "923121212",

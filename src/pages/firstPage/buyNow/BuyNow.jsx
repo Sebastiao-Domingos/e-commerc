@@ -7,7 +7,7 @@ import {log } from '../../../images/exportImages.js'
 import {BtnNormal } from '../../../components/export.js'
 import {Header} from './header/Header'
 export const BuyNow = () => {
-
+  document.title = "Confirmar os produtos selecionados"
   const { colors , } = useContext(ColorContext );
   const {productsBought , setProductsBought} = useContext(BoughtContext);
 

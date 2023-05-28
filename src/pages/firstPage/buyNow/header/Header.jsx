@@ -6,15 +6,16 @@ import {log } from '../../../../images/exportImages.js'
 export const Div = styled.div`
     display:flex;
     align-items:center;
-    border-bottom:1px solid ${ props => props.colors.green1};
+    border-bottom:1px dotted ${ props => props.colors.green1};
 
     img{
-        width:120px;
+        width:8rem;
+        height:6rem;
     }
 
     h2{
         color:${props => props.colors.blue};
-        font-size:2rem;
+        font-size:1.8rem;
         margin-left:2rem;
     }
 
