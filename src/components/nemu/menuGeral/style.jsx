@@ -42,6 +42,7 @@ export const Nav = styled.nav`
                     display:flex;
                     justify-content:center;
                     align-items:center;
+                    text-transform:uppercase;
                 }
 
                 &:last-child{
@@ -130,13 +131,20 @@ export const Nav = styled.nav`
 
             p{
                 cursor:pointer;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                >svg{
+                    font-size:2rem;
+                    margin-right:5px;
+                }
             }
             >ul{
                 position:absolute;
                 display:none;
                 background:${ props => props.colors.green1};
                 width:12rem;
-                left:-70px;
+                left:-80px;
                 padding:10px;
                 overflow:hidden;
 

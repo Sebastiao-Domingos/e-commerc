@@ -6,7 +6,7 @@ import axios from 'axios'
 import {Loading } from '../modals/export.js'
 import { Product } from './product/Product'
 import {MoreDetalhe } from './prductDetalhe/MoreDetalhe'
-
+var url  = "http://localhost/trabalhoPB/api";
 
 
 export const Section = () => {
@@ -21,23 +21,23 @@ export const Section = () => {
         switch (action) {
             case 1:{
                 showProducts.all.sort( (n , m) => {
-                    if( n.id.toLowerCase() > m.id.toLowerCase() ) return 1;
-                    if( n.id.toLowerCase() < m.id.toLowerCase() ) return -1;
+                    if( n.id > m.id ) return 1;
+                    if( n.id < m.id ) return -1;
                     return 0;
                 }); 
                 return {...state , first:true, second:false,third:false } ;
             }
             case 2:
                 showProducts.all.sort( ( a, b ) => {
-                    if( a.name.toLowerCase() > b.name.toLowerCase() ) return 1;
-                    if( a.name.toLowerCase() < b.name.toLowerCase() ) return -1;
+                    if( a.nome.toLowerCase() > b.nome.toLowerCase() ) return 1;
+                    if( a.nome.toLowerCase() < b.nome.toLowerCase() ) return -1;
                     return 0;
                 })
                 return {...state , first:false, second:true,third:false };
             case 3:
                 showProducts.all.sort( ( a , b ) => {
-                    if( a.price > b.price ) return 1;
-                    if( a.price < b.price ) return -1;
+                    if( a.preco > b.preco ) return 1;
+                    if( a.preco < b.preco ) return -1;
                     return 0;
                 } )
                 return {...state , first:false, second:false,third:true};
@@ -54,20 +54,18 @@ export const Section = () => {
 
 
     useEffect( () => {
-        axios.get("http://localhost:3030/products")
-        .then( res =>{
-            setProducts( res.data );
-            setShowProducts( {...showProducts, all:res.data[typeProduct] });
+
+        getProducts( typeProduct ).then( res => {
+            setShowProducts({...showProducts , all:res['dados'] });
+            setProducts( res['dados'] );
         })
-        .catch( err => console.log(err) );
 
     },[])
-
 
     useEffect( () => {
         if( keySearch !== ""){
             const filterProducts =showProducts.all.filter( ( product ) => {
-                return product.name.toLowerCase().includes(keySearch.toLowerCase());
+                return product.nome.toLowerCase().includes(keySearch.toLowerCase());
             }) 
             setShowProducts({...showProducts , searched :filterProducts,searching : true } );
         }else {
@@ -75,7 +73,12 @@ export const Section = () => {
         }
     },[keySearch])
 
-    useEffect( () => { setShowProducts({...showProducts , all:products[typeProduct]})} ,[typeProduct])
+
+    useEffect( () => { 
+        getProducts( typeProduct ).then( res => {
+            setShowProducts({...showProducts , all:res['dados'] });
+        })
+    } ,[typeProduct])
 
 
     function handleMoreDetale(id_product ){
@@ -88,21 +91,37 @@ export const Section = () => {
     let bought = productsBought || [];
 
     function handleAddCard( prod ){
-        if( products[typeProduct] ) {
-            const newProduct = products[typeProduct].filter( (product )=> {
-                if(product.id === prod ) return product;
-            })
-            bought.push(newProduct[0]);
-            setProductsBought( () => bought );
+        
+        if( products ) {
 
-            setCounter( previous => previous + 1 ) ;
+            const verify = verifyExistThisProduct( productsBought  , prod );
+            
+            if( !verify.has ) {
+
+                const newProduct = showProducts.all.filter( (product )=> {
+                    if(product.id === prod ) return product;
+                })
+                let newProductBought =newProduct[0];
+
+                newProductBought.qnt = 1;
+                bought.push( newProductBought );
+                
+                setProductsBought( () => bought );
+                
+                setCounter( previous => previous + 1 ) ;
+
+            } else {
+                bought[ verify.index ].qnt++;
+                setProductsBought( () => bought );
+            }
         } 
+        
     }
 
   return (
     <Div colors ={ colors } moreDetale = { state.detale }>
         <div className="contentText" >
-            <h2>{typeProduct.toUpperCase() }</h2>
+            <h2>{typeProduct.toUpperCase()}S</h2>
 
             <ul>
                 <li>Ordenar Por <FaChevronUp />
@@ -119,23 +138,24 @@ export const Section = () => {
         <div className="containerProducts">
             <section>
                 { !showProducts.searching ? ( showProducts.all ? ( showProducts.all.map( ( product , index )=>{
-                        return <Product  key ={index} event = { () => handleAddCard( product.id, index )} eventDetale = { () => handleMoreDetale( product.id )  }
-                            name ={ product.name }
-                            price ={product.price}
-                            info ={product.info}
-                            photo ={product.photo}
-                            id ={product.id}
-                            star={product.stars}
-                        
-                        />
+                        if( product.ativado )
+                            return <Product  key ={index} event = { () => handleAddCard( product.id, index )} eventDetale = { () => handleMoreDetale( product.id )  }
+                                name ={ product.nome }
+                                price ={product.preco}
+                                info ={product.info}
+                                photo ={product.foto}
+                                id ={product.codigo}
+                                star={product.stars}
+                            
+                            />
                     }) ) : ( <Loading />)
                 ):(  showProducts.searched.map( ( product , index )=>{
                         return <Product  key ={index} event = { () => handleAddCard( product.id ) }
-                            name ={ product.name }
-                            price ={product.price}
+                            name ={ product.nome }
+                            price ={product.preco}
                             info ={product.info}
-                            photo ={product.photo}
-                            id ={product.id}
+                            photo ={product.foto}
+                            id ={product.codigo}
                             star={product.stars}    
                         />
                     })
@@ -160,4 +180,31 @@ function scrollWindow( positionY ){
         left:0,
         behavior:"smooth"
     })
+}
+
+
+function verifyExistThisProduct(products , product ){
+    let has , index = -1;
+    
+    products.filter( ( prod , pos  ) => {
+        if( prod.id === product ) {
+            index = pos;
+            has = true;
+        }
+    });
+
+    return { has : has , index : index };
+}
+
+async function getProducts(type){
+
+    try {
+        const res = await fetch(`${url}/produtos/lista/${type}`);
+        const response = await res.json();
+        return response;
+    } catch (error) {
+        console.log(error);
+        return "No";
+    }
+
 }

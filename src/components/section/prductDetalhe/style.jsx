@@ -57,6 +57,13 @@ export const Div = styled.div`
                         margin:1rem 0;
                     }
                 }
+
+                ol{
+                    li{
+                        margin:15px 20px;
+
+                    }
+                }
             }
             
         }

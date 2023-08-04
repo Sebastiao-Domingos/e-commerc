@@ -18,17 +18,24 @@ export const Div = styled.div`
         font-size:1.8rem;
         margin-left:2rem;
     }
+    
+    >svg{
+        margin-left:3rem;
+        font-size:4rem;
+        color:${props => props.colors.green1 };
+    }
 
 `;
 
 
-export const Header = ({title}) => {
+export const Header = ({title ,Icon }) => {
 
     const { colors ,} =useContext(ColorContext)
   return (
     <Div className = "header" colors ={colors} >
         <img src={ log } alt="logo da empresa" />
         <h2>{ title}</h2>
+        { Icon && Icon }
     </Div>
   )
 }

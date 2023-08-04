@@ -22,7 +22,7 @@ export default function Menu() {
 
     function handleSearch( e ){
         e.preventDefault();
-        console.log( search );
+        // console.log( search );
     }
  
 

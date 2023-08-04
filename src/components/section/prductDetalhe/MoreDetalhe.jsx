@@ -11,44 +11,52 @@ export const MoreDetalhe = ( { id ,eventBack,event  } ) => {
   const {productsBought, } = useContext(BoughtContext);
   const { products , typeProduct } = useContext(ProductsContext)
   const [product , setProduct ] = useState();
+  const [ precaussoes , setPrecaussoes  ] = useState([]);
 
 
   useEffect( () => {
-    const detaleProduct = products[typeProduct].filter( ( product ) => product.id === id );
+
+    const detaleProduct = products.filter( ( product ) => product.id === id );
     setProduct( () =>  detaleProduct[0] );
+
+    if( detaleProduct[0] ) {
+      const array = detaleProduct[0].precaussoes.split("|");
+
+      setPrecaussoes( array );
+    }
+
   },[]);
 
   return (
-    <Div colors ={ colors }>
+    <Div colors = { colors }>
       { product ?  (
         <div className="content">
-          <img src={product.photo } alt="foto de produto" />
+          <img src={ product.foto } alt = "foto de produto" />
 
           <div className="content_text">
-            <h3>{product.name}</h3> 
-            <p className ="price"><span>{product.price}</span>, 00kz</p> 
+            <h3>{product.nome}</h3> 
+            <p className ="price"><span>{product.preco}</span>, 00kz</p> 
 
-            <p className ="info">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis minus qui porro, impedit ab delectus modi consequuntur, sed sapiente ipsum natus rerum, dolore quas nihil quibusdam corporis soluta dolores eum.
-            </p>
+            <p className ="info">{ product.info } </p>
 
             <div className="especification">
               <h4>Informações Do Fabrico</h4>
               <ul>
-                <li>Fabricado em : 20 de fevereiro de 2020</li>
-                <li>Expera em : 20 de fevereiro de 2025</li>
-                <li>Código de fabricação : 00123F0A</li>
-                <li>Nome da Fábrica : AnfoCalt </li>
+                <li>ID do Prutudo : { product.id } </li>
+                <li>Fabricado em : { product.data_fabrico }</li>
+                <li>Expera em : { product.data_validade }</li>
+                <li>Código de fabricação : {product.codigo }</li>
+                <li>Nome da Fábrica : { product.fabricante} </li>
               </ul>
             </div>
 
             <div className="precaussoes">
               <h4>Precaussões</h4>
-              <ul>
-                <li>Manter fora do alcanse das crianças;</li>
-                <li>Durante o trabalho use sempre a mascara;</li>
-                <li>Em cause de acidente ligue para um hospital mais próximo;</li>
-              </ul>
+              <ol>
+                <li>{ precaussoes && precaussoes[0] }</li>
+                <li>{ precaussoes && precaussoes[1] }</li>
+                <li>{ precaussoes && precaussoes[2] }</li>
+              </ol>
             </div>
           </div>
 

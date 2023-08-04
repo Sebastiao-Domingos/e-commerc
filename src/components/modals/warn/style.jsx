@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Div = styled.div`
-
+    text-align:center;
     >div{
         margin-top:2rem;
 
@@ -14,5 +14,6 @@ export const Div = styled.div`
     p{
         margin-top:1rem;
         color:#ffff;
+        text-align:center;
     }
 `;

@@ -9,7 +9,7 @@ export const Warn = ({ Icon , text1 ,text2 }) => {
         <Content>
             <Div>
                 <div>
-                    { <Icon/> }
+                    { Icon && <Icon/> }
                 </div>
                 <p>{ text1 }</p>
                 <p>{ text2 }</p>

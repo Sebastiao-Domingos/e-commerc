@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 export const Div = styled.div`
-    width:14rem;
+    width:20rem;
     min-height:18rem;
     border-bottom:1px solid ${ props => props.colors.green1};
     padding-bottom:1rem;
@@ -12,7 +12,7 @@ export const Div = styled.div`
 
 
     >img{
-        height:8rem;
+        height:12rem;
         width:100%;
     }
 
@@ -26,6 +26,7 @@ export const Div = styled.div`
 
         .price{
             color:${ props => props.colors.green1};
+            margin:15px 0;
             span{
                 font-size:2rem;
                 color:${ props => props.colors.blue}
@@ -34,7 +35,7 @@ export const Div = styled.div`
 
         .description{
             font-size:.8rem;
-            margin:5px 0;
+            margin:10px 0;
 
             button{
                 color: ${ props => props.colors.blue};

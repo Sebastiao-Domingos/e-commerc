@@ -36,11 +36,15 @@ export const Div = styled.div`
                             margin-top:1rem;
                             input{
                                 margin:5px 0;
-                                padding:10px;
-                                background:${ props => props.colors.black};
-                                color:#ffff;
+                                padding:12px;
+                                background:#f6f6f6;
+                                border:1px solid #ccc;
                                 font-size:1rem;
                                 border-radius:2px;
+
+                                &::placeholder{
+                                    color:black;
+                                }
                             }
                         }
                         &:last-child{

@@ -8,17 +8,12 @@ import {FaUser } from 'react-icons/fa'
 export function Confirm( { event1 , event2, text }) {
     const { colors } = useContext( ColorContext );
     const { user , } = useContext(UserContext);
-
-    // const nav = useNavigate();
-
-    // const handleNavigate = ()=> {
-    //     nav("/inicial/signin");
-    // }
+    
   return (
     <MotherModal>
         <Content>
             <Div colors = { colors }>
-                <p><FaUser /> { user.userdate.name }</p>
+                <p><FaUser /> { user.userdate.name && user.userdate.name }</p>
                 <p>{text} </p>
 
                 <div className="buttons">

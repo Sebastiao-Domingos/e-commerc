@@ -1,8 +1,8 @@
-import {useContext,useState } from 'react'
+import {useContext,useState , useEffect } from 'react'
 import {useNavigate } from 'react-router-dom'
 import {FaTrashAlt ,FaHome, FaBan} from 'react-icons/fa'
 import {Div} from './style'
-import { ColorContext,UserContext } from '../../../contexts/export.js'
+import { ColorContext,UserContext, BoughtContext } from '../../../contexts/export.js'
 import {log } from '../../../images/exportImages.js'
 import {BtnNormal } from '../../../components/export.js'
 import {Header } from '../buyNow/header/Header'
@@ -13,26 +13,44 @@ export const Endereco = () => {
 
     const { colors , } = useContext(ColorContext);
     const { user , } = useContext(UserContext);
-    const [ address , setAddress ] = useState({ name : user.userdate.name ,address:"" , reference:"" ,nif:"" })
+
+    const { productsBought , setProductsBought } = useContext( BoughtContext );
+
+    const [ address , setAddress ] = useState({ nome : user.userdate.nome ,id : user.userdate.id ,address:"" , reference:"" ,nif:"Opcional", tipo_entrega : "" })
     const [ showModal , setShowModal ] = useState({warn : false})
     const [check , setCheck ] = useState({firstChecked : false , secondChecked : true } )
+    const [entrega , setEntrega ] = useState('Buscar na Loja');
     const navigator = useNavigate();
-
+    
+    let prods = productsBought;
+    let controler =0;
     function handleNextPage(e){
-        e.preventDefault()
-        if( validateFields( [address.name , address.address, address.reference , address.nif ] ) ) {
-            navigator("/payNow")
+        e.preventDefault();
+        if( validateFields( [address.nome , address.address, address.reference ] ) ) {
+
+            if( controler === 0 ) {
+                setAddress( { ...address , tipo_entrega :  entrega });
+                prods.push( address );
+                setProductsBought( () => prods );
+                controler++;
+            }
+            
+            navigator("/payNow");
         } else {
             setShowModal({...showModal , warn:true});
 
             setTimeout(() => {
                 setShowModal({...showModal , warn:false});
-            }, 2000);
+            }, 1500);
         }    
     }
 
     function handlePreviousPage(e){
         e.preventDefault();
+
+        prods.pop();
+        setProductsBought( () => prods );
+
         navigator("/buy");
     }
 
@@ -40,28 +58,38 @@ export const Endereco = () => {
         switch (e ) {
             case 0:
                 setCheck({...check , firstChecked :true , secondChecked:false })
+                setEntrega("Entrega para a casa");
                 break;
         
             case 1: 
                 setCheck({...check , firstChecked :false , secondChecked:true })
+                setEntrega("Buscar na loja");
                 break;
         }
     }
 
+
+    useEffect( () => {
+        setAddress( { ...address , tipo_entrega :  entrega });
+
+        console.log(productsBought);
+        console.log( entrega);
+    } , [entrega])
+
     return (
         <>
             <Div colors = {colors } active1 ={check.firstChecked } active2 ={ check.secondChecked } >
-                <Header title="O teu Endereços Actual e Entrega" />
+                <Header title="Endereço Actual e Entrega" />
 
                 <div className="container">
                     <div>
                         <p>Para adicionar um novo endereço , por favor preencha o formulário abaixo</p>   
                         <form action="submit">
                             <div>
-                                <label htmlFor="name">Nome</label>
-                                <input type="text" name="name" id="name"  
-                                    onChange = { ( e ) => setAddress( {...address , name:e.target.value} ) }
-                                    value ={address.name}
+                                <label htmlFor="nome">Nome</label>
+                                <input type="text" name="nome" id="nome"  
+                                    onChange = { ( e ) => setAddress( {...address , nome:e.target.value} ) }
+                                    value ={address.nome}
                                 />
                             </div>
                             <div>

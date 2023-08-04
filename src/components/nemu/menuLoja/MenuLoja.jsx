@@ -16,11 +16,9 @@ export function MenuLoja() {
     const [search , setSearch ] = useState('');
     const [positionY,setPositionY ] = useState(0);
     const [inputFocus , setInputFocus ] = useState(false);
+    const [showCard , setShowCard ] = useState(true);
     const cardRef = useRef();
     const searchRef = useRef();
-
-
-
 
     function reducer( state , action ) {
       switch (action) {
@@ -35,7 +33,7 @@ export function MenuLoja() {
       }
     }
 
-   const [state, dispatch] = useReducer(reducer , { active1 : true , active2:false, active3:false});
+   const [state, dispatch] = useReducer(reducer , { active1 : false , active2:false, active3:true});
 
     window.addEventListener( 'scroll' ,() =>{
       setPositionY( () =>  window.scrollY );
@@ -52,9 +50,15 @@ export function MenuLoja() {
     },[ positionY])
 
 
-    const handleApearCard = useCallback( () => {
-      cardRef.current.children[0].children[1].style.display ="block"; 
-    },[])
+    const handleApearCard =  () => {
+      setShowCard( current => !current ) ;
+      
+      if(showCard) {
+        cardRef.current.children[0].children[1].style.display ="flex"; 
+      }else {
+        cardRef.current.children[0].children[1].style.display ="none"; 
+      }
+    }
 
     function handleSetWindowScroll(){
       setInputFocus( ( previous ) => true );
@@ -77,7 +81,7 @@ export function MenuLoja() {
 
             <div className="cardRefplus" ref ={ cardRef } id ="card">
               <div>
-              <button  onClick = { handleApearCard}> <span>Carrinho : {counter }</span>  <FaCartPlus /></button>
+                <button  onClick = { handleApearCard}> <span>{counter }</span>  <FaCartPlus /></button>
 
                 <Card colors ={colors}/>
               </div>
@@ -87,20 +91,20 @@ export function MenuLoja() {
           </div>
           <div className="user">
             <ul>
+                <BtnLink colors = { colors } path = "/"  text = "Destaques"  active ={ state.active3 }  event = { () => dispatch( 3 ) } />
+                <BtnLink colors = { colors } path = "/"  text = "Novos produtos"  active ={ state.active2 }   event = { () => dispatch( 2 ) } />
                 <BtnLink Icon = { FaChevronUp } colors = { colors }  path = "/" text = "produtos" active = { state.active1 }    >
                   <ul>
-                    <li onClick = { () => dispatch("fertilizantes") }>Fertilizantes</li>
-                    <li onClick = { () => dispatch("adubos") }>Adubos</li>
-                    <li onClick = { () => dispatch("maquinas") }>Máquinas</li>
-                    <li onClick = { () => dispatch("sementes") }>Sementes</li>
+                    <li onClick = { () => dispatch("fertilizante") }>Fertilizantes</li>
+                    <li onClick = { () => dispatch("adubo") }>Adubos</li>
+                    <li onClick = { () => dispatch("maquina") }>Máquinas</li>
+                    <li onClick = { () => dispatch("semente") }>Sementes</li>
                   </ul>
                 </BtnLink>
-                <BtnLink colors = { colors } path = "/"  text = "Novos produtos"  active ={ state.active2 }   event = { () => dispatch( 2 ) } />
-                <BtnLink colors = { colors } path = "/"  text = "Destaques"  active ={ state.active3 }  event = { () => dispatch( 3 ) } />
             </ul>
 
             <form onSubmit = { ( e ) => e.preventDefault() } className = "normalSearch" ref ={ searchRef }>
-              <input type="text" name="search" id="search" placeholder = "Pesquisa por nome ou ID " 
+              <input type="text" name="search" id="search" placeholder = "Pesquisa por nome " 
                 value ={keySearch }
                 onInput= { e => setKeySearch( e.target.value ) } 
                 onFocus ={handleSetWindowScroll}

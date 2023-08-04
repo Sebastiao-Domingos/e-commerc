@@ -6,21 +6,20 @@ import { ColorContext ,UserContext } from '../../../contexts/export.js'
 import { FaCamera } from 'react-icons/fa'
 import { BtnNormal } from '../../export.js';
 import {Div} from "./style"
-import {addUser} from '../../../request/dataFunction'
 import { Loading , Allowed ,Warn } from '../export.js'
+const url = 'http://localhost/trabalhoPB/api';
+
 
 export default function SignUP() {
   const { colors } = useContext( ColorContext );
   const { user ,setUser  } = useContext( UserContext );
 
   const [ newUser , setNewUser  ] = useState({
-    name : "",
+    nome : "",
+    morada: "",
     email :"",
     tel : "",
-    morada: "",
     pass : "",
-    chat : [],
-    compras :[],
   })
 
   const [ confirmPass , setConfirmPass ] = useState('');
@@ -40,10 +39,19 @@ export default function SignUP() {
 
         setTimeout(() => {
           setShowModal( {...showModal , load : false });
+
+          var addedData = {
+            nome : newUser.nome,
+            morada: newUser.morada,
+            email :newUser.email,
+            telefone : newUser.tel,
+            pass : newUser.pass,
+          }
+
           
-          if( addUser( newUser ) ) {
-            setUser({...user , logged:true , userdate : newUser});
-            
+          if( add(  'clientes' , addedData ) ) {
+
+            setUser({...user , logged:true , userdate : newUser})
             setShowModal({...showModal , allow:true})
             
             setTimeout(() => {
@@ -51,12 +59,13 @@ export default function SignUP() {
               navigator("/");
             }, 3000);
             
-            setNewUser({...newUser, name : "",email :"", tel : "", morada: "", pass : "", chat : [], compras :[], });
+            setNewUser({...newUser, nome : "",email :"", tel : "", morada: "", pass : ""});
             setConfirmPass("");
 
           }else {
             alert("falha na linha");
           }
+
 
         }, 3000);
 
@@ -64,16 +73,15 @@ export default function SignUP() {
         setShowModal({...showModal  , warn2:true });
         setTimeout(() => {
           setShowModal({...showModal  , warn2:false });
-        }, 3000);
+        }, 1500);
       } 
    else {
       setShowModal({...showModal , warn :true });
       setTimeout(() => {
         setShowModal({...showModal , warn :false });
-      }, 3000);
+      }, 1500);
     }
   }
-
 
   return (
     <>
@@ -81,29 +89,29 @@ export default function SignUP() {
         <form onSubmit= { handleSignUp  }>
           <div className="first">
             <div>
-              <label htmlFor="name">Nome Complento : </label>
-              <input type="text" name="name" id="name" 
-                value ={ newUser.name }
-                onInput = { ( e ) => setNewUser( {...newUser , name : e.target.value })}
+              <label htmlFor="nome">Nome Complento : </label>
+              <input type="text" nome="nome" id="nome" 
+                value ={ newUser.nome }
+                onInput = { ( e ) => setNewUser( {...newUser , nome : e.target.value })}
               />
             </div>
             <div>
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" 
+              <input type="email" nome="email" id="email" 
                 value ={ newUser.email }
                 onInput = { ( e ) => setNewUser( {...newUser , email : e.target.value })}
               />
             </div>
             <div>
-              <label htmlFor="tell">Telemovel</label>
-              <input type="tel" name="tel" id="tel" 
+              <label htmlFor="tel">Telemovel</label>
+              <input type="tel" nome="tel" id="tel" 
                 value ={ newUser.tel }
                 onInput = { ( e ) => setNewUser( {...newUser , tel : e.target.value  })}
               />
             </div>
             <div>
               <label htmlFor="morada">Morada</label>
-              <input type="text" name="morada" id="morada" 
+              <input type="text" nome="morada" id="morada" 
                 value ={ newUser.morada }
                 onInput = { ( e ) => setNewUser( {...newUser , morada : e.target.value })}
               />
@@ -112,14 +120,14 @@ export default function SignUP() {
           <div className="second">
             <div>
               <label htmlFor="pass1">Palavra Passe</label>
-              <input type="password" name="pass1" id="pass1" 
+              <input type="password" nome="pass1" id="pass1" 
                 value ={ newUser.pass }
                 onInput = { ( e ) => setNewUser( {...newUser , pass : e.target.value })}
               />
             </div>
             <div className ="pass">
               <label htmlFor="pass2">Confirmar a Palavra Passe </label>
-              <input type="password" name="pass2" id="pass2" 
+              <input type="password" nome="pass2" id="pass2" 
                 value ={ confirmPass  }
                 onInput = { ( e ) => setConfirmPass( e.target.value )}
               />
@@ -144,9 +152,8 @@ export default function SignUP() {
 }
 
 
-
 function validateInput( newUser ){
-  let array =[ newUser.name ,newUser.email ,newUser.tel,newUser.morada,newUser.pass]
+  let array =[ newUser.nome ,newUser.email ,newUser.tel,newUser.morada,newUser.pass]
   const emptyInput = array.every( input => input.trim() !== "" );
 
   return emptyInput;
@@ -157,4 +164,24 @@ function validatePassWords( newUser , confir ){
     return newUser.pass === confir ;
 }
 
+async function add( type ,  newData ) {
+  let added = false;
+  
+  try {
 
+      const response =  await fetch(`${url}/${type}/adicionar` , {
+        method : 'POST',
+        body: JSON.stringify( newData )
+      } )
+
+      const data = await response.json();
+
+      added = true;
+
+  } catch (error) {
+      console.log( error );
+  }
+
+
+  return added;
+}

@@ -2,9 +2,9 @@ import styled ,{ keyframes } from 'styled-components'
 
 
 const come = keyframes`
-  0%{transform: scale(0);}
-  35%{ transform: scale(1.1)}
-  70%{ transform: scale(.8)}
+  0%{transform: scale(.9);}
+  35%{ transform: scale(1.05)}
+  70%{ transform: scale(.99)}
   100%{ transform: scale(1)}
 `
 

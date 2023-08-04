@@ -27,13 +27,13 @@ export const Product = ( {eventDetale,event ,name , price ,info , id ,photo,star
                 )) : "ola"}
                 </p>
 
-                <p>ID : {id}</p>
+                <p>CÓDIGO : {id}</p>
             </div>
 
             <BtnNormal 
-                text ="Adicionar"
+                text ="Adicionar no Carrinho"
                 backColor ={colors.blue}
-                width ='6rem'
+                width ='12rem'
                 event ={event}
             />
 

@@ -1,6 +1,6 @@
 import {Div} from './style'
 import { ColorContext, BoughtContext } from '../../../contexts/export.js'
-import {useContext,useState } from 'react'
+import {useContext,useState , useEffect  } from 'react'
 import {useNavigate } from 'react-router-dom'
 import {FaTrashAlt} from 'react-icons/fa'
 import {log } from '../../../images/exportImages.js'
@@ -8,11 +8,11 @@ import {BtnNormal } from '../../../components/export.js'
 import {Header} from './header/Header'
 export const BuyNow = () => {
   document.title = "Confirmar os produtos selecionados"
+
   const { colors , } = useContext(ColorContext );
   const {productsBought , setProductsBought} = useContext(BoughtContext);
 
   const [price , setPrice ] = useState(getTotalPrice(productsBought));
-
 
 
   const navigator = useNavigate();
@@ -36,26 +36,22 @@ export const BuyNow = () => {
               <td>Produtos</td>
               <td>Quantidade</td>
               <td>Valor em Kz</td>
-              <td>Eliminar</td>
             </tr>
           </thead>
           <tbody>
               { productsBought && productsBought.map((product , index ) => (
                 <tr key = {index}>
                   <td>
-                    <img src={product.photo} alt="Produtos selecionados" />
+                    <img src={product.foto} alt="Produtos selecionados" />
                     <div>
-                      <p>{product.name}</p>
-                      <p>{product.info }</p>
+                      <p>{product.nome}</p>
+                      <p>Melhores Produtos para agricultura só encontras na SOLEVO</p>
                     </div>
                   </td>
 
-                  <td>1</td>
+                  <td>{product.qnt}</td>
 
-                  <td>{product.price}</td>
-
-                  <td><FaTrashAlt/> </td>
-
+                  <td>{product.preco}</td>
                 </tr>
               ))}
           </tbody>
@@ -84,15 +80,10 @@ export const BuyNow = () => {
   )
 }
 
-
 function getTotalPrice( products  ){
     let price =0;
-
     products.forEach( (product ) => {
-      let firstPrice = product.price;
-      firstPrice = +firstPrice.replace(".","")
-      console.log(firstPrice);
-      price += firstPrice;
+      price += product.preco*product.qnt;
     })
 
     return price;

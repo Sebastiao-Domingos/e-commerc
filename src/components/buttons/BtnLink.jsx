@@ -35,32 +35,29 @@ export const Btn = styled.li`
         display:none;
         flex-direction:column;
         position:absolute;
-        height:24rem;
-        width:20rem;
+        height:17rem;
+        width:16rem;
         top:102%;
         left:0;
         padding-top:1.5rem;
-        
         z-index:1000;
-        background:${ props => props.colors.blue };
-        box-shadow: 0 0 5px ${ props => props.colors.black};
+        background:${ props => props.colors.white };
+        box-shadow: 0 0  3px #ccc;
 
         >li{
             display:flex;
             margin:10px 0;
-            border-top:2px dotted transparent;
-
-            font-size:.9rem;
+            border-top:1px dotted transparent;
+            font-size:1rem;
             padding:10px;
-            color:#f1f2f4;
+            color:${ props => props.colors.green1 };
             a{
-                font-size:.9rem;
-                padding:10px;
-                color:#f1f2f4;
+                font-size:1rem;
+                padding:7px;
+                color:${ props => props.colors.green1 };
             }
-
             &:hover{
-                border-top-color:${ props => props.colors.green1 };
+                border-top-color:${ props => props.colors.blue };
             }
         }
     }

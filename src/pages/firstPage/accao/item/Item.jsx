@@ -2,12 +2,12 @@ import { Div } from "./style"
 import { ColorContext } from "../../../../contexts/export.js"
 import {useContext } from "react"
 
-export const Item = ({photo}) => {
+export const Item = ({photo , chave}) => {
 
     const { colors ,} = useContext(ColorContext);
 
     return (
-        <Div colors ={colors}>
+        <Div colors ={colors} key = {chave}>
             <img src={photo} alt="foto" />
 
             <div className="contentItem">

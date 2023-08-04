@@ -5,6 +5,7 @@ export const Div = styled.div`
     top:35%;
     width:40rem;
     padding-top:2rem;
+    text-align: center;
 
     p{
         color:#fefefe;

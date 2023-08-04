@@ -2,62 +2,61 @@ import { ColorContext,UserContext } from '../../../contexts/export.js'
 import { BtnNormal } from '../../export.js'
 import {Div} from './style'
 import { Loading, Warn ,Allowed } from "../export.js"
-import {Link,Navigate } from 'react-router-dom'
-import { useContext,useState,useEffect } from 'react'
+import {Link,Navigate  } from 'react-router-dom'
+import { useContext,useState,useEffect, useReducer } from 'react'
 import axios from 'axios'
 import {FaBan , FaUserAltSlash } from 'react-icons/fa'
+const url = 'http://localhost/trabalhoPB/api';
 
 export default function SignInModal() {
   const [ dataUser , setDataUser ] = useState({email : '', pass:'' });
-  const [users,setUsers ] = useState([]);
   const { colors } = useContext(ColorContext);
   const { user , setUser } = useContext(UserContext);
-  const [ showModal , setShowModal  ] = useState({ load: false , allow:false , warn:false,warn2:false } );
-
-
-  useEffect( () => {
-    axios.get("http://localhost:3030/users")
-    .then( res =>  setUsers( res.data ) )
-    .catch( err => console.log( err ) );
-
-  },[])
+  
+  function reducer( state ,action ){
+    switch ( action ) {
+      case "loader":
+        return {...state, load:true , allow:false , warn:false , warn2:false};
+      case "allowed":
+        return {...state, load:false , allow:true , warn:false , warn2:false};
+      case "warn":
+        return {...state, load:false , allow:false , warn:true , warn2:false};
+      case "warn2":
+        return {...state, load:false , allow:false , warn:false , warn2:true};
+      default:
+        return {...state , load:false , allow:false,warn:false , warn2:false};
+    }
+  }
+  const [state, dispatch] = useReducer(reducer,{ load:false , allow:false,warn:false , warn2:false})
 
   function handleLogin( e ){
     e.preventDefault();
-    const response = validateDate( users , dataUser );
 
     if( validateEmptyInput( [dataUser.email , dataUser.pass ] ) ){
-      
-      if( response.hasUser ) {
+        dispatch("loader");
         
-        setShowModal({...showModal , load:true });
-        setTimeout(() => {
-          setShowModal({...showModal , load:false, allow:true });
+        login(dataUser.email ,dataUser.pass  ).then( res => {
 
-          setTimeout(() => {
-            setShowModal({...showModal , load:false, allow:false,warn:false,warn2:false });
-            setUser({ ...user, userdate : response.user , logged : true} );
-          }, 2000);
-          
-        }, 3000);
-
-      }else {
-        setShowModal({...showModal , load:true })
-        setTimeout(() => {
-          setShowModal({...showModal ,load : false,warn:true });
-          
-          setTimeout(() => {
-              setShowModal({...showModal , load:false, allow:false,warn:false,warn2:false });
-          }, 4000);
-          
-        }, 1500);
-      }
+          if( res["dado"] !== "NO" ){
+            dispatch("allowed");
+            setTimeout(() => {
+              let constAdmin = ( res['dado'].email === "administrador12345678900987654321@gmail.com" ) ? true :false;
+              setUser({ ...user, userdate : res["dado"] , logged : true ,admin : constAdmin  } );
+              dispatch("");
+            }, 2000);
+          }else{
+            dispatch("warn");
+            setTimeout(() => {
+              dispatch();
+            }, 2000);
+          }
+        })
 
     }else {
-      setShowModal({...showModal ,warn2:true });
+      dispatch("warn2");
       setTimeout(() => {
-        setShowModal({...showModal , load:false, allow:false,warn:false,warn2:false });
-      }, 4000);
+        dispatch();
+      }, 1600);
     }
   }
 
@@ -86,22 +85,22 @@ export default function SignInModal() {
                 width= "6rem"
                 backColor = { colors.green1}
             />
-            <p>Se não tens conta, <Link to ="/inicial/signup">click aqui </Link></p>
+            <p><Link to ="/inicial/signup">Não tenho uma conta. </Link></p>
           </div>
         </form>
       </div>
 
-      { user.logged && <Navigate to ="/" />}
+      { user.logged &&  ( !user.admin  ? <Navigate to ="/" /> : <Navigate to = "/dashBoard" /> )}
 
     </Div>
-    { showModal.load && <Loading /> }
-    { showModal.allow && <Allowed  user /> }
-    { showModal.warn && <Warn 
-      text1="Dados Inválidos ! "
+    { state.load && <Loading /> }
+    { state.allow && <Allowed  user /> }
+    { state.warn && <Warn 
+      text1="Usuário náo encontrado! "
       text2 ="Por favor, verifica o teu email e a palavra passe."
       Icon = { FaUserAltSlash }
     /> }
-    { showModal.warn2 && <Warn 
+    { state.warn2 && <Warn 
       text1="Campos vazios!"
       text2 ="Por favor, preencha todos os campos!"
       Icon = { FaBan }
@@ -112,24 +111,19 @@ export default function SignInModal() {
   )
 }
 
-
-
-function validateDate(users , userDate ){
-  let user ={}  , has = false;
-  const hasUser = users.some( ( userdate ) => {
-    if( userdate.email === userDate.email && userdate.pass === userDate.pass  ){
-      user = userdate;
-      has = true;
-    } 
-    return has ;
-  })
-  return {  hasUser ,  user };
-}
-
-
 function validateEmptyInput(array ){
 
    const hasEmptyInput= array.every( input => input.trim() !== "");
 
    return hasEmptyInput;
+}
+
+async function login( email, pass ){
+    try {
+      const res =  await fetch(`${url}/login/${email}/${pass}`)
+      const response = await res.json();
+      return response;
+    } catch (error) {
+      return "ERROR";
+    }
 }

@@ -81,7 +81,7 @@ export const Div = styled.div`
                     transform:translateX(-50%);
                     bottom:10px;
                     left:50%;
-                    z-index:1000;
+                    z-index:1;
 
                     >div{
                         width:15px;

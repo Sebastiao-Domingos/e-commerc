@@ -11,7 +11,8 @@ export const Div = styled.section`
         display:flex;
         justify-content:space-between;
         align-items:center;
-        background:${props => props.colors.black};
+        box-shadow:0 0 5px #ccc;
+        background:#f1ecec;
 
         h2{
             font-size:1.9rem;
@@ -64,7 +65,7 @@ export const Div = styled.section`
 
 
                 &:hover{
-                    border-radius: 10px 10px 0 0;
+                    border-radius: 3px 3px 0 0;
                     border-bottom-color:transparent;
 
                     >svg{
@@ -73,7 +74,7 @@ export const Div = styled.section`
 
                     >ul{
                         display:block;
-                        border-radius:0 0 10px 10px;
+                        border-radius:0 0 3px 3px;
                     }
                 }
             }
@@ -83,7 +84,7 @@ export const Div = styled.section`
     .containerProducts{
         display: ${ props => props.moreDetale ? "flex" : "block"};
         section{
-            width:${ props => props.moreDetale ? "50%" : "100%"};
+            width:${ props => props.moreDetale ? "45%" : "100%"};
             padding:3rem ${ props => props.moreDetale ? "1rem" : "6%"} 3rem 6%;
             display:flex;
             flex-wrap:wrap;
@@ -115,7 +116,7 @@ export const Div = styled.section`
             `}
         }
         aside{
-            width:${ props => props.moreDetale ? "50%" : "0%"};
+            width:${ props => props.moreDetale ? "55%" : "0%"};
             display:${ props => props.moreDetale ? "block" : "none"};
             padding-right:6%;
         }

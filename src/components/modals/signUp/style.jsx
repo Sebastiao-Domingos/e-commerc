@@ -21,6 +21,7 @@ export const Div = styled.div`
       content:"Sign up";
       font-size:1.5rem;
       top:0;
+      left:0;
       width:100%;
       padding:25px 0;
       display:flex;
@@ -55,10 +56,13 @@ export const Div = styled.div`
 
       }
       .second{
-        .pass{
+        .pass {
             margin-bottom:2rem;
-            
-        }        
+        }   
+        
+        button{
+          margin-top:1rem;
+        }
       }
     }
 

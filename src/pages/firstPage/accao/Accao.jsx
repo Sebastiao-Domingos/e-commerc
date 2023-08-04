@@ -14,7 +14,7 @@ export default function Accao() {
         <Header   title = "Algumas acções que a SOLEVO fez para a sociedade" />
         <div className="container">
           { items && items.map( ( item , index ) => (
-            <Item  photo = {item} />
+            <Item  photo = {item} chave = {index}  key = {index}/>
           ))}
         </div>
       </div>

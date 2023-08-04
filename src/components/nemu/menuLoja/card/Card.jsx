@@ -13,23 +13,31 @@ export const Card = ({photo }) => {
     const cardRef = useRef();
     const navigator =useNavigate()
     const [products , setProducts ] = useState(null);
+    const [ quantity , setQuantity ] = useState( 0 );
 
     useEffect( () => {
+        setQuantity( () =>  productsBought.length )
         setProducts( productsBought );
-    },[productsBought])
+    },[productsBought]);
 
     const handleBuyMore = useCallback(()=>{
         cardRef.current.style.display="none";
-    },[])
+    },[]);
 
     function handleBuyNow (){
-        navigator("/buy");
 
-        window.scrollTo( {
-            top:0,
-            left:0,
-            behavior:"smooth"
-        })
+        if( productsBought.length > 0 ) {
+            navigator("/buy");
+
+            window.scrollTo( {
+                top:0,
+                left:0,
+                behavior:"smooth"
+            })
+        } else{
+            alert("Sem protudos para finalizar a compra")
+        }
+
     }
 
     let arrayBought= productsBought ;
@@ -42,35 +50,39 @@ export const Card = ({photo }) => {
 
         setCounter( previous => previous - 1 );
     }
-  return (
-    <Div colors = {colors} ref = {cardRef}>
+  return ( 
+  <>
+    <Div colors = {colors} ref = {cardRef} quantity = { quantity } >
         <h3>A minha compra</h3>
-
-        <table>
-            <thead>
-                <tr>
-                <td>Imagem</td>
-                <td>Nome</td>
-                <td>Quantidade</td>
-                <td>Valor em Kz</td>
-                </tr>
-            </thead>
-            <tbody>
-                { products ? (
-                    products.map( ( product , index ) => (
-                        <tr key = {index }>
-                            <td><img src={ product.photo} alt="produtos" /></td>
-                            <td>{ product.name }</td>
-                            <td><button> -</button><span>1</span><button>+</button> </td>
-                            <td>{ product.price } <span onClick = { () => handleDeleteProduct( product.id , index) } ><FaTrashAlt /></span></td>
+        <div className = "bying">
+            { products ? (
+                <table>
+                    <thead>
+                        <tr>
+                        <td>Imagem</td>
+                        <td>Nome</td>
+                        <td>Quantidade</td>
+                        <td>Valor em Kz</td>
+                        <td>Eliminar</td>
                         </tr>
-                    ))
-                ) : (
-                    <tr><td>Sem produtos clica no comprar para adicionar</td></tr>
-                )}
-            </tbody>
-        </table>
-
+                    </thead>
+                    <tbody>
+                        {
+                            products.map( ( product , index ) => (
+                                <tr key = {index }>
+                                    <td><img src={ product.foto} alt="produtos" /></td>
+                                    <td>{ product.nome }</td>
+                                    <td>{product.qnt} </td>
+                                    <td>{ product.preco } </td>
+                                    <td><span onClick = { () => handleDeleteProduct( product.id , index) } ><FaTrashAlt /></span></td>
+                                </tr>
+                            ))
+                        }
+                    
+                    </tbody>  
+                </table>
+            ) : ( <p>Não tem nenhum produto na cestinha!</p> )}
+        </div>
         <div className="buttons">
             <BtnNormal 
                 text ="Comprar Mais"
@@ -87,7 +99,10 @@ export const Card = ({photo }) => {
             />
         </div>
 
+
     </Div>
+
+  </>
   )
 }
 

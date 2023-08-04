@@ -9,8 +9,9 @@ export const Div = styled.div`
     background: ${ props => props.colors.black};
     border-radius:2px;
     padding:20px;
-    text-align:center;
     display:flex;
+    justify-content: center;
+    align-items:center;
     z-index:3000;
 `
 

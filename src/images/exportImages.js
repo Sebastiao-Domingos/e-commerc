@@ -1,18 +1,5 @@
 import log from './log/logo.png'
-// import dest1 from "./destaques/desta1.jfif"
-// import dest2 from "./destaques/desta2.jfif"
-// import dest3 from "./destaques/desta3.jfif"
-// import prod1 from './produtos/product (1).jfif'
-// import prod2 from './produtos/product (2).jfif'
-// import prod3 from './produtos/product (3).jfif'
-// import prod4 from './produtos/product (4).jfif'
-// import prod5 from './produtos/product (5).jfif'
-// import prod6 from './produtos/product (6).jfif'
-// import prod7 from './produtos/product (7).jfif'
-// import prod8 from './produtos/product (8).jfif'
-// import prod9 from './produtos/product (9).jfif'
-// import prod10 from './produtos/product (10).jfif'
-// import prod11 from './produtos/product (11).jfif'
+
 
 import photo1 from "./foto/empresa (1).jpg"
 import photo2 from "./foto/empresa (2).jpg"
@@ -30,8 +17,10 @@ import photo13 from "./foto/empresa (13).jpg"
 import photo14 from "./foto/empresa (14).jpg"
 import photo15 from "./foto/empresa (15).jpg"
 import photo16 from "./foto/empresa (16).jpg"
+import mult from "./cards/multicaixa.png"
+import express from "./cards/express.jpg"
 
 
-export {log , photo1 , photo2,photo3 , photo4 , photo5 , photo6, photo7 , photo8, photo9 ,photo10 , photo11 , photo12,photo13,photo14,photo15,photo16 };
+export { mult ,express,log , photo1 , photo2,photo3 , photo4 , photo5 , photo6, photo7 , photo8, photo9 ,photo10 , photo11 , photo12,photo13,photo14,photo15,photo16 };
 
 // export { log ,dest1, dest2,dest3 ,prod1,prod2,prod3,prod4,prod5,prod6,prod7,prod8,prod9,prod10,prod11};

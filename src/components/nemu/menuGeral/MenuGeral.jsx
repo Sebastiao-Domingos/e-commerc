@@ -21,8 +21,6 @@ export function MenuGeral() {
     
   },[])
 
-
-
   function handleConfirm(){
     setShowModals({...showModals , confirm : true } );
   }
@@ -57,25 +55,24 @@ export function MenuGeral() {
             <li onClick = { () => handleChangeElementMenu(3) }> Ver  <FaChevronUp />
               <ul>
                 <li>
-                  <Link to ="/compras">Minhas Compras</Link>
-                </li>
+                  <Link to ="/conversar">Conversar com SOLEVO</Link>
+                </li>  
                 <li>
                   <Link to ="/perfil">Meu Perfil</Link>
                 </li>
                 <li>
-                  <Link to ="/conversar">Conversar com SOLEVO</Link>
-                </li>  
+                  <Link to ="/compras">Minhas Compras</Link>
+                </li>
               </ul>    
             </li>
           </ul>
           { user.logged ? (
               <div className ="userMenu">
-                <p> { user.userdate.name } <FaUserCircle /></p>
-
+                <p><FaUserCircle /> { user.userdate.nome } </p>
                 <ul>
                   <li>{user.userdate.email }</li>
                   <li>
-                    <Link to ="/" >Perfil</Link>
+                    <Link to ="/perfil" >Perfil</Link>
                   </li>
                   <li>
                     <Link to ="/" onClick = { handleConfirm } >Sair</Link>
